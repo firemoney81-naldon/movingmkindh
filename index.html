@@ -1,23 +1,664 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <!-- Schema.org FAQ 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "양평 포장이사 비용은 왜 업체마다 다른가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "이동 거리, 짐의 양, 작업 인원 수, 사다리차 사용 유무, 엘리베이터 유무 등 다양한 요인에 따라 달라집니다. 특히 양평 지역은 주택 형태나 도로 조건에 따라 추가 비용이 발생할 수 있으므로, 여러 업체에 견적을 받아보는 것이 중요합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "양평 용달이사 서비스를 이용하면 어떤 장점이 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "용달이사는 포장과 정리를 고객이 직접 처리하고, 차량과 운반 인력만 제공받는 방식입니다. 짐이 적거나 단거리 이사 시 비용 절감 효과가 크며, 1인가구나 원룸 이사에 적합합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "양평 지역 이사비용을 절약할 수 있는 팁이 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "이사 비수기인 평일이나 주중에 예약하고, '손 없는 날'을 피하면 비용을 절약할 수 있습니다. 또한, 이사 전에 불필요한 짐을 정리하여 짐의 양을 줄이거나 포장재를 미리 준비하는 것도 좋은 방법입니다. 짐 양에 따른 정확한 견적을 여러 업체로부터 비교해 보세요."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "이사 당일 피해 발생 시 보상 기준은 어떻게 되나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "관허업체(정식 허가업체)의 경우 적재물 배상책임보험에 가입되어 있어 이사 중 발생하는 물품 파손이나 손상에 대해 보상을 받을 수 있습니다. 계약서 작성 시 보상 범위와 약관을 반드시 확인해야 합니다. 무허가 업체는 보상이 어려울 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "양평 주택 이사는 아파트 이사와 어떤 점이 다른가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "양평은 전원주택이 많아 아파트와 달리 진입로가 좁거나, 짐을 운반하는 거리가 길어질 수 있습니다. 이로 인해 작업 시간이 더 소요되거나 추가 비용이 발생할 수 있으므로, 견적 방문 시 현장 조건을 정확하게 알려주는 것이 중요합니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+  <style>
+    :root {
+      --primary-color: #2A4D69;
+      --secondary-color: #4B86B4;
+      --accent-color: #ADCBE3;
+      --highlight-color: #E7EFF6;
+      --text-color: #2D3E50;
+      --bg-light: #F0F4F8;
+      --bg-white: #ffffff;
+      --btn-color: #FF6F61;
+      --btn-hover: #FF4F3B;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin:0; padding:0;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height:1.6;
+    }
+    .container {
+      max-width: 1000px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    header {
+      background-color: var(--primary-color);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--bg-white);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-weight:700;
+    }
+    header h1 a {
+      color: var(--bg-white);
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      color: var(--bg-white);
+      text-align: center;
+      padding: 90px 20px;
+    }
+    .hero h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      font-weight:700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    .hero p {
+      font-size: 1.4em;
+      margin-bottom: 35px;
+    }
+    .cta-btn {
+      background-color: var(--btn-color);
+      color: var(--bg-white);
+      padding: 18px 45px;
+      font-size:1.3em;
+      font-weight: bold;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .cta-btn:hover {
+      background-color: var(--btn-hover);
+      transform: translateY(-3px);
+    }
+    .compare-form-box {
+      background-color: var(--bg-white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+    .compare-form-box h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size:2em;
+    }
+    .compare-form-box label {
+      display: block;
+      margin-bottom:8px;
+      font-weight:500;
+      color: var(--text-color);
+      text-align: left;
+    }
+    .compare-form-box input, .compare-form-box select {
+      width:100%;
+      padding:12px;
+      margin-bottom:20px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      box-sizing:border-box;
+    }
+
+    .content-section {
+      margin-top: 40px;
+      background-color: var(--bg-white);
+      padding: 60px 0;
+      border-radius:10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .content-section h2 {
+      font-size: 2.8em;
+      color: var(--secondary-color);
+      margin-bottom:30px;
+      font-weight:700;
+      text-align:center;
+    }
+    .content-section h3 {
+      font-size:1.6em;
+      color: var(--primary-color);
+      margin-top:30px;
+      margin-bottom:15px;
+    }
+    .feature-grid {
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top:30px;
+    }
+    .feature-grid .item {
+      width: calc(33.33% - 20px);
+      margin:10px;
+      padding:20px;
+      background-color: var(--highlight-color);
+      border-radius:8px;
+      text-align:center;
+    }
+    .feature-grid .item img {
+      width:80px; height:80px;
+      margin-bottom:15px;
+    }
+    .keyword-list {
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top:30px;
+    }
+    .keyword-list li {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      padding:10px 20px;
+      margin:5px;
+      border-radius:20px;
+      font-weight:500;
+    }
+    .faq-item {
+      border-bottom:1px solid #ddd;
+      padding:20px 0;
+    }
+    .faq-item h3 {
+      cursor:pointer;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      font-size:1.4em;
+      color: var(--primary-color);
+    }
+    .faq-item h3::after {
+      content: '+';
+      font-size:1.5em;
+      color: var(--secondary-color);
+      transition: transform 0.3s;
+    }
+    .faq-item.active h3::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      display: none;
+      padding-top:10px;
+      color:#555;
+      font-size:1.1em;
+    }
+    .faq-item.active p {
+      display: block;
+    }
+
+    /* Additional Styles for Charts and Tables */
+    .table-responsive {
+        overflow-x: auto;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 0.95em;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: var(--highlight-color);
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+    .chart-box {
+        background-color: var(--highlight-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+    .chart-bar {
+        background-color: var(--secondary-color);
+        height: 25px;
+        margin-bottom: 5px;
+        border-radius: 4px;
+        text-align: right;
+        color: var(--bg-white);
+        line-height: 25px;
+        padding-right: 10px;
+        font-size: 0.9em;
+    }
+    .chart-container {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .chart-row {
+        display: flex;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .chart-label {
+        width: 150px;
+        min-width: 150px;
+        margin-right: 10px;
+        font-weight: 500;
+        line-height: 25px;
+    }
+    .chart-value {
+        flex-grow: 1;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      text-align:center;
+      padding: 40px 20px;
+      font-size:0.9em;
+    }
+    footer a {
+      color: var(--bg-white);
+      text-decoration:none;
+      margin:0 10px;
+    }
+    footer a:hover {
+      text-decoration:underline;
+    }
+    @media (max-width:768px) {
+      .hero h1 { font-size:2.4em; }
+      .hero p { font-size:1.2em; }
+      .cta-btn { padding:15px 30px; font-size:1.1em; }
+      .compare-form-box { padding:25px; }
+      .content-section h2 { font-size:2.2em; }
+      .feature-grid .item { width:100%; margin:10px 0; }
+      .keyword-list li { margin:3px; font-size:0.9em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="/">양평이사 가격 비교</a></h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>양평 최고의 포장이사, 이삿짐센터 전문</h1>
+        <p>양평 전 지역(양평읍, 용문면, 양서면 등) 맞춤형 이사 솔루션으로 안전하고 신속한 이사를 약속드립니다.</p>
+        <div class="compare-form-box">
+          <h2>양평 이사 비용 무료 견적 비교 요청</h2>
+          <p>간단한 정보 입력만으로 양평 지역 이사업체들의 정확한 이사비용을 받아보고, 최대 30% 절약하세요.</p>
+          <form id="quote-form">
+            <label for="move-type">이사 종류 선택</label>
+            <select id="move-type" name="move-type" required>
+                <option value="">-- 이사 종류를 선택하세요 --</option>
+                <option value="포장이사">포장이사 (Full Service)</option>
+                <option value="반포장이사">반포장이사 (Semi-Packing)</option>
+                <option value="용달이사">용달이사 (Truck + Labor)</option>
+                <option value="원룸이사">원룸이사 (Small Scale)</option>
+            </select>
+
+            <label for="move-size">이사 평수 / 짐량</label>
+            <select id="move-size" name="move-size" required>
+                <option value="">-- 평수/짐량을 선택하세요 --</option>
+                <option value="원룸/투룸">원룸 / 투룸</option>
+                <option value="20평대">20평대 아파트/주택</option>
+                <option value="30평대">30평대 아파트/주택</option>
+                <option value="40평대이상">40평대 이상/대형 주택</option>
+            </select>
+
+            <label for="date">이사 희망 날짜</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="from-address">출발지 (양평 지역 내 주소)</label>
+            <input type="text" id="from-address" name="from-address" placeholder="예: 양평읍 양근리 아파트" required>
+
+            <label for="to-address">도착지 (상세 주소)</label>
+            <input type="text" id="to-address" name="to-address" placeholder="예: 양평군 양서면 다문리 주택" required>
+
+            <label for="phone">연락처</label>
+            <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" required>
+
+            <button type="submit" class="cta-btn">무료 견적 요청하기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>양평이삿짐센터, 왜 지역 전문가를 선택해야 할까요?</h2>
+        <p>양평은 아파트, 빌라와 함께 전원주택, 단독주택의 비중이 높은 지역입니다. 이러한 주거 형태의 특성상 이사 환경이 다양하며, 일반적인 수도권 아파트 이사와는 다른 전문성이 요구됩니다. 양평 지역의 도로 사정과 건물 구조를 잘 아는 전문 이사업체를 선택하는 것이 안전하고 효율적인 이사를 위한 첫걸음입니다.</p>
+        <div class="feature-grid">
+          <div class="item">
+            <img src="https://via.placeholder.com/80/2A4D69/fff?text=ICON1" alt="지역 전문성 아이콘">
+            <h3>지역 특화 서비스</h3>
+            <p>양평 전 지역(양평읍, 양서면, 강상면, 강하면, 용문면, 개군면, 단월면, 청운면, 지평면, 옥천면, 서종면 등)의 지형과 주택 구조에 대한 깊은 이해를 바탕으로 맞춤형 이사를 제공합니다.</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/80/2A4D69/fff?text=ICON2" alt="안전한 포장 아이콘">
+            <h3>전문 포장 및 정리</h3>
+            <p>가구와 짐을 안전하게 포장하는 전문팀이 가전제품, 고가품, 파손 위험 물품 등을 세심하게 다룹니다. 또한 도착지에서 가구 배치와 정리까지 원스톱으로 처리합니다.</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/80/2A4D69/fff?text=ICON3" alt="투명한 견적 아이콘">
+            <h3>투명한 견적 시스템</h3>
+            <p>추가 비용 없는 투명한 견적을 제공합니다. 2026년 이사 동향을 반영한 합리적인 가격으로 고객 만족도를 높입니다.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:50px;">함께 많이 찾는 키워드</h3>
+        <ul class="keyword-list">
+          <li>#양평이삿짐센터</li>
+          <li>#양평포장이사</li>
+          <li>#양평용달이사</li>
+          <li>#양평이사비용</li>
+          <li>#양평원룸이사</li>
+          <li>#양평아파트이사</li>
+          <li>#양평전원주택이사</li>
+          <li>#양평이사업체추천</li>
+          <li>#용문면포장이사</li>
+          <li>#양서면이사</li>
+          <li>#강상면이사</li>
+          <li>#양평군이사</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>양평 이사 유형별 선택 가이드: 포장이사 vs 용달이사</h2>
+        <p>이사 서비스는 크게 '포장이사', '반포장이사', '용달이사'로 나뉩니다. 각 서비스는 비용, 편의성, 짐의 양에 따라 적합한 유형이 다릅니다. 양평 지역의 특성상, 짐의 양과 주거 환경에 맞춰 신중하게 선택해야 합니다.</p>
+
+        <h3>1. 포장이사 (Full Packing Service)</h3>
+        <p>포장이사는 이사의 모든 과정을 이사업체에서 전담하는 서비스입니다. 짐 포장부터 운반, 배치, 청소까지 전문 인력이 처리하므로 고객은 이사 당일 별도로 신경 쓸 일이 거의 없습니다. 맞벌이 부부나 시간이 부족한 경우, 혹은 짐이 많은 30평대 이상의 아파트 이사에 특히 적합합니다. 양평읍, 강상면, 강하면 등의 아파트 단지나 대형 주택 이사 시 선호도가 높습니다.</p>
+        <h4>포장이사 상세 서비스 항목</h4>
+        <ul>
+            <li>포장: 옷, 주방용품, 가전제품, 가구 등 모든 짐을 품목별 전문 포장재로 포장</li>
+            <li>운반: 사다리차, 1톤/2.5톤/5톤 트럭 등을 이용한 안전한 운반</li>
+            <li>배치 및 정리: 도착지에서 가구 배치, 주방용품 정리, 청소 등 마무리 서비스</li>
+            <li>보상: 적재물 배상책임보험을 통한 피해 보상</li>
+        </ul>
+
+        <h3>2. 용달이사 (Truck + Labor Service)</h3>
+        <p>용달이사는 차량과 최소한의 인력만 제공되는 경제적인 이사 방식입니다. 짐 포장과 정리를 고객이 직접 처리해야 하므로 노동력이 필요하지만, 비용이 저렴하다는 장점이 있습니다. 짐이 적은 원룸이사나 투룸이사, 또는 양평 내 단거리 이사에 적합합니다. 주로 1인가구 또는 학생 이사 시 많이 이용됩니다.</p>
+        <h4>용달이사 상세 서비스 항목</h4>
+        <ul>
+            <li>운반: 고객이 포장한 짐을 차량으로 운반</li>
+            <li>상하차 지원: 운반 시 상하차 작업 인력 제공 (1~2명)</li>
+            <li>비용 절감: 직접 포장함으로써 인건비 절약 가능</li>
+        </ul>
+
+        <h3>3. 반포장이사 (Semi-Packing Service)</h3>
+        <p>포장이사와 용달이사의 중간 형태입니다. 출발지에서는 업체가 포장을 담당하고, 도착지에서는 고객이 직접 짐 정리를 합니다. 비용과 편의성 사이에서 균형을 맞춘 서비스로, 짐이 적당히 있고 정리 능력이 있는 고객에게 적합합니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>양평 지역별 이사 특성 분석 (2026년 이사 동향 반영)</h2>
+        <p>양평은 수도권임에도 불구하고 전원생활 수요가 높아 다양한 주거 형태가 공존합니다. 따라서 이사 업체 선정 시 지역별 특성을 고려해야 합니다.</p>
+
+        <h3>양평 지역 키워드 기반 서비스 분석</h3>
+        <p>양평군 내 주요 지역인 양평읍, 용문면, 양서면, 강상면, 강하면, 서종면, 개군면, 단월면, 청운면, 지평면, 옥천면 등 각 지역별 특성에 맞는 이사 서비스를 제공합니다.</p>
+        <ul>
+            <li><strong>양평읍/강상면/강하면:</strong> 비교적 주거 밀집도가 높고 아파트 단지가 많아 일반 포장이사가 주를 이룹니다. 다만, 외곽 주택지의 경우 진입로 확인이 필수입니다.</li>
+            <li><strong>용문면/양서면:</strong> 전원주택이 많은 지역으로, 짐 운반 거리가 길어지거나 좁은 진입로로 인해 사다리차 사용이 제한될 수 있습니다. 이 경우 짐 운반 인력 추가 배정이나 특수 장비 사용이 고려됩니다.</li>
+            <li><strong>서종면:</strong> 고급 전원주택이 밀집한 지역으로, 고가품이나 특수 가구가 많은 경우가 있습니다. 이에 대비한 전문 포장 기술과 보험이 중요합니다.</li>
+        </ul>
+
+        <h3>양평 지역 이사비용을 결정하는 주요 요인 (2026년 기준)</h3>
+        <p>2026년 기준 양평 지역의 이사 비용은 다음과 같은 요인에 의해 변동성이 큽니다.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>요인</th>
+                        <th>설명</th>
+                        <th>양평 지역 특징</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>이사 거리 및 짐의 양</strong></td>
+                        <td>출발지와 도착지의 거리, 그리고 짐의 부피(톤)가 기본 비용을 결정합니다.</td>
+                        <td>양평 내 단거리 이사부터 타 시도로 이동하는 장거리 이사까지 다양합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>작업 인원 및 장비</strong></td>
+                        <td>작업 인원수(남자 인부, 여자 인부), 사다리차 사용 여부가 비용에 반영됩니다.</td>
+                        <td>전원주택 이사는 아파트보다 짐 운반에 더 많은 인력이 필요할 수 있습니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>이사 시기 및 날짜</strong></td>
+                        <td>'손 없는 날'이나 주말, 이사 성수기(봄, 가을)에는 가격이 상승합니다.</td>
+                        <td>양평 지역은 전입/전출 수요가 계절에 따라 변동합니다.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>주거 환경 특수성</strong></td>
+                        <td>엘리베이터 유무, 계단 작업 유무, 좁은 골목길 진입 여부 등 현장 상황입니다.</td>
+                        <td>양평 전원주택 지역은 사다리차 사용이 어렵거나 짐 운반 거리가 긴 경우가 많습니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>양평이삿짐센터 가격 절약을 위한 5가지 팁</h2>
+        <p>이사 비용을 절약하기 위해서는 이사 계획 단계부터 전략적으로 접근하는 것이 중요합니다. 다음은 양평 지역 이사 고객들이 자주 활용하는 비용 절약 팁입니다.</p>
+
+        <h3>1. 짐의 양을 최소화하기: 사전 정리 필수</h3>
+        <p>이사 비용은 짐의 양(부피)에 비례합니다. 이사 전 불필요한 가구나 물건을 미리 처분하거나 기부하면 짐의 양을 줄일 수 있습니다. 특히 양평에서 전원주택으로 이사하는 경우, 짐이 예상보다 많아지는 경우가 많으므로 신중한 정리가 필요합니다.</p>
+
+        <h3>2. 이사 비수기 및 평일 이용하기</h3>
+        <p>이사 수요가 몰리는 '손 없는 날'이나 주말을 피하고, 평일 비수기(특히 여름 장마철, 겨울)에 이사하면 비용을 크게 절감할 수 있습니다. 2026년 이사 계획 시에도 이 점을 고려하여 일정을 잡는 것이 좋습니다.</p>
+
+        <h3>3. 여러 업체 견적 비교하기 (최대 30% 절감 효과)</h3>
+        <p>단 한 곳의 업체 견적만으로 결정하는 것은 가장 흔한 실수입니다. 최소 2~3곳 이상의 정식 허가 업체로부터 견적을 받아 서비스 항목과 가격을 꼼꼼히 비교해야 합니다. 당사에서는 양평 지역의 여러 우수 업체 견적을 한 번에 비교해 드립니다.</p>
+
+        <h3>4. 현장 방문 견적 요청하기</h3>
+        <p>전화나 온라인 견적만으로는 정확한 비용 산출이 어렵습니다. 이사 현장 상황(주거 형태, 엘리베이터 유무, 진입로 등)을 정확하게 파악하기 위해 방문 견적을 요청해야 합니다. 특히 양평 전원주택의 경우 현장 방문은 필수적입니다.</p>
+
+        <h3>5. 특수 작업에 대한 사전 협의</h3>
+        <p>고가 가구, 피아노, 에어컨 분해/설치, 벽걸이 TV 설치 등 특수 작업이 필요한 경우 미리 업체와 협의해야 합니다. 당일 추가 비용 발생을 막고, 전문성 있는 인력을 배정받을 수 있습니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+        <p>양평 이사 고객님들이 자주 궁금해하시는 질문들을 모았습니다. 이 외 궁금증은 견적 요청 시 문의해 주시면 전문가가 답변해 드립니다.</p>
+
+        <div class="faq-item">
+          <h3>양평이삿짐센터 견적은 언제 받는 것이 좋나요?</h3>
+          <p>이사를 희망하는 날짜로부터 최소 2~3주 전에 견적을 받는 것이 좋습니다. 성수기(특히 봄철)에는 1개월 전에 미리 예약해야 원하는 날짜에 이사가 가능합니다. '손 없는 날'을 원한다면 더 일찍 예약해야 합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>양평 지역에서 이사 짐이 적은 원룸 이사는 어떻게 하나요?</h3>
+          <p>원룸 이사는 '용달이사' 또는 '소형 포장이사' 서비스를 이용합니다. 짐의 양이 적고 단거리 이동인 경우, 용달차량과 1인 인력 지원으로 비용을 절감할 수 있습니다. 짐이 적더라도 포장/정리를 원하시면 소형 포장이사를 선택할 수 있습니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>이사 당일 짐 추가 시 추가 비용이 발생하나요?</h3>
+          <p>견적 방문 시 산정된 짐의 양을 초과하는 경우, 추가 비용이 발생할 수 있습니다. 견적 산정 후 짐을 추가할 경우 미리 업체에 알려주시는 것이 좋습니다. 정확한 견적을 위해 사전에 짐 정리를 완료하고 견적을 받으세요.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>포장이사 시 주방 식기류 포장은 어떻게 이루어지나요?</h3>
+            <p>포장이사 서비스에는 주방 식기류 포장이 포함됩니다. 깨지기 쉬운 식기류는 에어캡(뽁뽁이)이나 전문 포장재로 개별 포장하며, 도착지에서 다시 정리해 드립니다.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>양평 전원주택 이사 시 주의할 점이 있나요?</h3>
+            <p>양평 전원주택은 진입로가 좁거나 경사가 심한 경우가 많습니다. 사전에 이사업체에 진입로 환경을 정확히 설명해야 합니다. 사다리차 사용이 어려운 경우, 인력 운반 작업이 추가되거나 특수 장비가 필요할 수 있습니다.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>양평이삿짐센터 이사 서비스 종합 비교 분석 (2026년)</h2>
+            <p>서비스 종류별 장단점과 예상 비용 범위를 비교하여 고객님의 상황에 맞는 최적의 이사 방법을 선택할 수 있도록 도움을 드립니다.</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>서비스 종류</th>
+                            <th>적합한 고객</th>
+                            <th>주요 서비스 특징</th>
+                            <th>2026년 예상 비용 (24평 기준)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>포장이사</strong></td>
+                            <td>시간이 부족한 고객, 맞벌이 부부, 짐이 많은 가구 (30평대 이상)</td>
+                            <td>모든 짐 포장 및 정리, 전문 인력 배치, 보상 서비스 제공</td>
+                            <td>120만원 ~ 180만원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>반포장이사</strong></td>
+                            <td>비용 절약을 원하는 고객, 이사 후 정리정돈을 직접 할 수 있는 고객</td>
+                            <td>포장은 업체, 정리는 고객 담당, 포장이사 대비 비용 절감</td>
+                            <td>90만원 ~ 130만원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>용달이사</strong></td>
+                            <td>짐이 적은 1인가구, 원룸/투룸 이사, 단거리 이사</td>
+                            <td>차량 및 운반 인력 지원, 포장/정리는 고객 직접 처리</td>
+                            <td>40만원 ~ 80만원</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top:50px;">이사 유형별 양평 지역 고객 선호도 (가상 데이터 기반)</h3>
+            <div class="chart-box">
+                <div class="chart-container">
+                    <div class="chart-row">
+                        <span class="chart-label">양평읍 아파트 이사</span>
+                        <div class="chart-value">
+                            <div class="chart-bar" style="width: 70%;">포장이사 70%</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">양서면 전원주택 이사</span>
+                        <div class="chart-value">
+                            <div class="chart-bar" style="width: 55%;">포장이사 55%</div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">용문면 원룸/투룸 이사</span>
+                        <div class="chart-value">
+                            <div class="chart-bar" style="width: 45%;">용달이사 45%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+        <p>이사 서비스 선택 시 소비자의 권리 보호 및 관련 법규를 확인하고, 이사 준비에 필요한 정보를 얻을 수 있는 공신력 있는 외부 자료입니다.</p>
+        <ul>
+          <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%ED%99%94%EB%AC%BC%EC%9A%B4%EC%86%A1%EC%9D%B4%EC%A3%BC%EC%9D%B8%EC%A6%89%EC%97%85%EC%9D%98%EC%9A%B4%EC%98%81%EC%97%90%EA%B4%80%ED%95%9C%EB%B2%95%EB%A5%A0" target="_blank" rel="noopener">「화물자동차 운수사업법」 – 이삿짐 운송 관련 법규</a></li>
+          <li><a href="https://www.consumer.go.kr/main/index.do" target="_blank" rel="noopener">한국소비자원 – 이사 서비스 소비자 피해 상담 및 기준</a></li>
+          <li><a href="https://www.go.go.kr/movingservice/index.jsp" target="_blank" rel="noopener">이사화물운송주선사업자협회 – 관허업체 확인 및 이사 정보</a></li>
+          <li><a href="https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%82%AC" target="_blank" rel="noopener">위키백과 – 이사의 정의 및 문화</a></li>
+          <li><a href="https://www.gov.kr/portal/lawService.do?menuId=2&query=%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%A3%BC%EA%B1%B0" target="_blank" rel="noopener">정부 민원포털 – 양평군 주거 관련 정보</a></li>
+        </ul>
+        <p>위 자료들은 이삿짐센터 선택 시 법적 기준, 소비자 권리, 서비스 내용 비교 등에 유용한 정보입니다. 정식 허가업체를 통해 안전한 이사를 진행하세요.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>양평이삿짐센터 가격비교 플랫폼</strong> &copy; 2025 All Rights Reserved.</p>
+      <p>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">이용약관</a>
+        <a href="#">문의하기</a>
+      </p>
+      <p>본 사이트는 양평 지역 이삿짐센터 비교정보를 제공하며, 실제 계약은 선택하신 업체와 직접 진행됩니다. 저희는 중개 플랫폼입니다.</p>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+
+    // 폼 제출 시 유효성 검사 및 메시지 출력 (예시)
+    document.getElementById('quote-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('견적 요청이 접수되었습니다. 곧 전문가가 연락드리겠습니다.');
+        // 실제 서버 전송 로직은 여기에 추가됩니다.
+        this.reset();
+    });
+  </script>
+
+  
